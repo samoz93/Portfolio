@@ -1,8 +1,10 @@
 import { shaderMaterial } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import * as THREE from "three";
 import { AudioVisualizerController } from "../services/audio.vis.service.ts";
 import { audio_frag, audio_vertix } from "../shaders/index.ts";
+import { SphereRadius } from "../state/index.ts";
 
 const Shader = shaderMaterial(
   {
@@ -13,18 +15,24 @@ const Shader = shaderMaterial(
   audio_frag
 );
 
+const geometry = new THREE.IcosahedronGeometry(SphereRadius, 200);
+const geometrySphere = new THREE.SphereGeometry(SphereRadius, 100, 100);
 extend({ Shader });
 export const AudioVisSphere = () => {
   const shader = useMemo(() => new Shader(), []);
-
-  useFrame((state, delta) => {
-    shader.uTime += delta * 0.1;
+  const ref = useRef<THREE.Mesh<any, any>>();
+  useFrame(() => {
+    shader.uTime += 0.01;
     AudioVisualizerController.updateMaterialUniform(shader);
+    if (ref.current) {
+      ref.current.rotation.x += 0.01;
+      ref.current.rotation.z += 0.01 * AudioVisualizerController.getFrequency();
+    }
   });
 
   return (
-    <mesh material={shader}>
-      <sphereGeometry args={[1, 32, 32]} />
+    <mesh ref={ref} material={shader} geometry={geometry}>
+      <lineSegments args={[geometrySphere, shader]} scale={1.03}></lineSegments>
     </mesh>
   );
 };

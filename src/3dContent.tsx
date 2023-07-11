@@ -5,7 +5,12 @@ import { MainScene } from "./scenes/main.scene.tsx";
 
 export const ThreeComponent = () => {
   return (
-    <Canvas gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}>
+    <Canvas
+      gl={{
+        antialias: false,
+        preserveDrawingBuffer: true,
+      }}
+    >
       <Lights />
       <OrbitControls />
       <MainScene />

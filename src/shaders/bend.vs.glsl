@@ -1,7 +1,8 @@
 uniform float uTime;
 uniform float uRadius;
+varying vec2 vUv;
+varying vec3 vPosition;
 
-const float PI = 3.141592653589793238;
 
 
 void main() {
@@ -13,10 +14,12 @@ void main() {
 
 
     // Update the vertex position
-    pos.z += smoothstep( -uRadius, uRadius,dist );
+    pos.z -= smoothstep( -uRadius, uRadius,dist ) * uRadius;
     // pos.z = 
 
     gl_Position =  projectionMatrix  * modelViewMatrix * vec4(pos, 1.0);
     // csm_PositionRaw =  gl_Position;
+    vUv = uv;
+    vPosition = pos;
 
 }

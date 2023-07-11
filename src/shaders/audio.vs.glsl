@@ -109,7 +109,7 @@ void main() {
     vec3 light = normalize(vec3(3., 2., -1.));
 	float r = dot(nor(uv), light);
     float displacement = clamp(r,0.,0.3) + uFrequency;
-    pos+= normal * displacement;
+    pos+= normal * displacement * .6;
     gl_Position =  projectionMatrix  * modelViewMatrix * vec4(pos, 1.0);
     // csm_PositionRaw =  gl_Position;
     vUv = uv;
