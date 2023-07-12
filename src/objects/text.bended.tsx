@@ -15,7 +15,7 @@ const Shader = shaderMaterial(
   bend_frag
 );
 
-export const TextBended = ({ headUp } = { headUp: 0 }) => {
+export const TextBended = ({ headUp, text } = { headUp: 0, text: "" }) => {
   const radius = SphereRadius * 1.5;
   const shader = useMemo(() => new Shader(), []);
   const { aNumber } = useControls({ aNumber: { value: radius } });
@@ -47,7 +47,7 @@ export const TextBended = ({ headUp } = { headUp: 0 }) => {
           font={"/fonts/oswald.json"}
           material={shader}
         >
-          Under Construction
+          {text}
         </Text3D>
       </group>
     </>

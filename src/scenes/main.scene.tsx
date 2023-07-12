@@ -13,8 +13,8 @@ export const MainScene = () => {
         floatingRange={[0.1, 0.3]}
       >
         <AudioVisSphere />
-        <TextBended headUp={0} />
-        <TextBended headUp={Math.PI} />
+        <TextBended text={"Under Construction"} headUp={0} />
+        <TextBended text={"Coming Soon"} headUp={Math.PI} />
       </Float>
       {/* <Floor /> */}
     </>
