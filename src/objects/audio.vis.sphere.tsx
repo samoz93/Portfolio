@@ -22,7 +22,7 @@ export const AudioVisSphere = () => {
   const ref = useRef<THREE.Mesh<any, any>>();
   useFrame(() => {
     shader.uniforms.uTime.value += 0.01;
-    AudioVisualizerController.updateMaterialUniform(shader, 60);
+    AudioVisualizerController.updateMaterialUniform(shader);
     if (ref.current) {
       ref.current.rotation.x += 0.01;
       ref.current.rotation.z += 0.01 * AudioVisualizerController.getFrequency();

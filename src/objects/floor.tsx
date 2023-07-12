@@ -21,7 +21,7 @@ export const Floor = () => {
 
   useFrame(() => {
     shader.uniforms.uTime.value += 0.01;
-    AudioVisualizerController.updateMaterialUniform(shader, 20);
+    AudioVisualizerController.updateMaterialUniform(shader);
   });
 
   return (
