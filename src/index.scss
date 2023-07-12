@@ -5,6 +5,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  background: linear-gradient(90deg, #9195dd, #ccb5f6);
 }
 
 body,
@@ -27,10 +28,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  color: #646cff;
+  background: linear-gradient(90deg, #646cff8f, #9c66ff85);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s ease-in-out;
 }
 button:hover {
   border-color: #646cff;

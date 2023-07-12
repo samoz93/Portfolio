@@ -1,3 +1,4 @@
+// @ts-nocheck
 import audio_frag from "./audio.fs.glsl";
 import audio_frag_V2 from "./audio.v2.fs.glsl";
 import audio_vertix_v2 from "./audio.v2.vs.glsl";
@@ -6,6 +7,8 @@ import bend_frag from "./bend.fs.glsl";
 import bend_vertix from "./bend.vs.glsl";
 import dissolve_frag from "./dissolve_frag.glsl";
 import dissolve_vertix from "./dissolve_vertix.glsl";
+import floor_frag from "./floor.fs.glsl";
+import floor_vertix from "./floor.vs.glsl";
 import gradient_frag from "./gradient_frag.fs.glsl";
 import gradient_vertix from "./gradient_vertix.vs.glsl";
 import new_frag from "./new_frag.fs.glsl";
@@ -24,6 +27,8 @@ export {
   bend_vertix,
   dissolve_frag,
   dissolve_vertix,
+  floor_frag,
+  floor_vertix,
   gradient_frag,
   gradient_vertix,
   new_frag,
