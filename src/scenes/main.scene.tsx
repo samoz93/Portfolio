@@ -1,6 +1,5 @@
 import { Float } from "@react-three/drei";
 import { AudioVisSphere } from "../objects/audio.vis.sphere.tsx";
-import { Floor } from "../objects/floor.tsx";
 import { TextBended } from "../objects/text.bended.tsx";
 
 export const MainScene = () => {
@@ -17,7 +16,7 @@ export const MainScene = () => {
         <TextBended headUp={0} />
         <TextBended headUp={Math.PI} />
       </Float>
-      <Floor />
+      {/* <Floor /> */}
     </>
   );
 };

@@ -6,6 +6,7 @@ import { Lights } from "./environment/lights.tsx";
 import { MainScene } from "./scenes/main.scene.tsx";
 
 export const ThreeComponent = () => {
+  // @ts-ignore
   const isDebug = process.env.NODE_ENV === "development";
 
   return (
