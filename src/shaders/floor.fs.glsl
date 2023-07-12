@@ -4,5 +4,5 @@ varying float vNoise;
 
 void main() {
 
-    gl_FragColor =  vec4(vec3(vUv,vNoise) * 2.,1.);
+    gl_FragColor =  vec4(vec3(vUv,vNoise) * 1.2,1.);
 }
