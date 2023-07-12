@@ -18,12 +18,12 @@ class AudioVisController {
     });
   }
 
-  getFrequency() {
+  getFrequency(freqThreshold: number) {
     return Math.max(this.analyser.getAverageFrequency() - 60, 0) / 50;
   }
 
-  updateMaterialUniform(material: THREE.ShaderMaterial) {
-    const freq = this.getFrequency();
+  updateMaterialUniform(material: THREE.ShaderMaterial, freqThreshold = 60) {
+    const freq = this.getFrequency(freqThreshold);
     const freqUniform = material.uniforms["uFrequency"];
 
     gsap.to(freqUniform, {

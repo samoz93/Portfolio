@@ -18,6 +18,7 @@ export const ThreeComponent = () => {
       gl={{
         antialias: false,
         preserveDrawingBuffer: true,
+        outputEncoding: "sRGB",
       }}
     >
       <Lights />

@@ -1,6 +1,7 @@
 uniform float uTime;
-varying vec3 vPosition;
 uniform float uFrequency;
+varying vec2 vUv;
+varying float vNoise;
 
 
 
@@ -112,12 +113,13 @@ void main() {
     vec3 pos = position;
     
     // Calculate the distance of the vertex from the center
-    float noise = snoise(pos * uFrequency * .1);
+    float noise = snoise(pos * uFrequency * .1 + sin(uTime));
 
 
-    pos += normal * noise;
+    pos += normal * noise ;
 
     gl_Position =  projectionMatrix  * modelViewMatrix * vec4(pos, 1.0);
     // csm_PositionRaw =  gl_Position;
-    vPosition = pos;
+    vUv =uv;
+    vNoise = noise;
 }

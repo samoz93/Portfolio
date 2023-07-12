@@ -1,5 +1,5 @@
 import { shaderMaterial } from "@react-three/drei";
-import { extend, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { AudioVisualizerController } from "../services/audio.vis.service.ts";
@@ -17,13 +17,12 @@ const Shader = shaderMaterial(
 
 const geometry = new THREE.IcosahedronGeometry(SphereRadius, 200);
 const geometrySphere = new THREE.SphereGeometry(SphereRadius, 100, 100);
-extend({ Shader });
 export const AudioVisSphere = () => {
   const shader = useMemo(() => new Shader(), []);
   const ref = useRef<THREE.Mesh<any, any>>();
   useFrame(() => {
-    shader.uTime += 0.01;
-    AudioVisualizerController.updateMaterialUniform(shader);
+    shader.uniforms.uTime.value += 0.01;
+    AudioVisualizerController.updateMaterialUniform(shader, 60);
     if (ref.current) {
       ref.current.rotation.x += 0.01;
       ref.current.rotation.z += 0.01 * AudioVisualizerController.getFrequency();

@@ -19,22 +19,22 @@ export const TextBended = ({ headUp } = { headUp: 0 }) => {
   const radius = SphereRadius * 1.5;
   const shader = useMemo(() => new Shader(), []);
   const { aNumber } = useControls({ aNumber: { value: radius } });
-  const textRef = useRef<THREE.Mesh>();
-  const groupRef = useRef<THREE.Mesh>();
+  const textRef = useRef<THREE.Mesh<any, THREE.ShaderMaterial>>();
+  const groupRef = useRef<THREE.Group>();
 
   useEffect(() => {
-    if (textRef.current) {
+    if (textRef.current && groupRef.current) {
       textRef.current.geometry.center();
       groupRef.current.rotation.y = headUp;
     }
   }, [textRef.current === undefined]);
 
-  shader.uRadius = aNumber;
+  shader.uniforms.uRadius.value = aNumber;
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y -= 0.01;
-      shader.uTime += 0.01;
+      shader.uniforms.uTime.value += 0.01;
     }
   });
 
