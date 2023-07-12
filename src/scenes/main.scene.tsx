@@ -14,7 +14,7 @@ export const MainScene = () => {
       >
         <AudioVisSphere />
         <TextBended text={"Under Construction"} headUp={0} />
-        <TextBended text={"Coming Soon"} headUp={Math.PI} />
+        <TextBended text={"Coming Soon!"} headUp={Math.PI} />
       </Float>
       {/* <Floor /> */}
     </>
